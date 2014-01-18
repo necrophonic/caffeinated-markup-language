@@ -1,0 +1,242 @@
+[
+	{
+		"state_name": "data",
+		"rules": [
+			{ "char": "star ( * )", "actions": [ "Push strong state" ] },
+			{ "char": "foreslash ( / )", "actions": [ "Push emphasis state" ] },
+			{ "char": "underscore ( _ )", "actions": [ "Push underline state" ] },
+			{ "char": "dash ( - )", "actions": [ "Push deleted state" ] },
+			{ "char": "double quote ( \" )", "actions": [ "Push quote-start state" ] },
+			{ "char": "open curly brace ( { )", "actions": [ "Push image-start state" ] },
+			{ "char": "open square brace ( [ )", "actions": [ "Push link-start state" ] },
+			{ "char": "percent ( % )", "actions": [ "Push escape-block-start state" ] },
+			{ "char": "newline ( \\n )", "actions": [ "Create new newline token", "Push newline state" ] },
+			{ "char": "EOF", "actions": [ "Swap to end-of-data state" ] },
+			{ "char": "anything else", "actions": [ "Append character to current token" ] }
+		]
+	},
+	{
+		"state_name": "strong",
+		"rules": [
+			{
+				"char": "star ( * )",
+				"actions": [ "Create new strong token", "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ "Append star ( * ) to current token", "Push end-of-data state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append star ( * ) to current token",
+					"Re-consume character",
+					"Pop state"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "emphasis",
+		"rules": [
+			{
+				"char": "foreslash ( / )",
+				"actions": [ "Create new emphasis token", "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ "Append foreslash ( / ) to current token", "Push end-of-data state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append foreslash ( / ) to current token",
+					"Re-consume character",
+					"Pop state"
+				]
+			}
+
+		]
+	},
+	{
+		"state_name": "underline",
+		"rules": [
+			{
+				"char": "underscore ( _ )",
+				"actions": [ "Create new underline token", "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ "Append underscore ( _ ) to current token", "Push end-of-data state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append underscore ( _ ) to current token",
+					"Re-consume character",
+					"Pop state"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "deleted",
+		"rules": [
+			{
+				"char": "dash ( - )",
+				"actions": [ "Create new deleted token", "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ "Append dash ( - ) to current token", "Push end-of-data state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append dash ( - ) to current token",
+					"Re-consume character",
+					"Pop state"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "newline",
+		"rules": [
+			{
+				"char": "EOF",
+				"actions": [ "Switch to end-of-data state" ]
+			},
+			{
+				"char": "newline ( \\n )",
+				"actions": [ "Create new newline token" ]
+			},
+			{
+				"char": "space ( )",
+				"actions": [ "No action" ]
+			},
+			{
+				"char": "hash ( # )",
+				"actions": [ "Create new header-start token", "Swap to header-start state" ]
+			},
+			{
+				"char": "tilde ( ~ )",
+				"actions": [ "Push section-break state" ]
+			},
+			{
+				"char": "equals ( = )",
+				"actions": [ "Pop state", "Re-consume character" ]
+			}
+		]
+	},
+	{
+		"state_name": "header-start",
+		"rules": [
+			{
+				"char": "EOF",
+				"actions": [
+					"Discard current token",
+					"Create a new string token with initial content being a string of hashes equal to the <em>level</em> of the discarded header token",
+					"Push end-of-data state"
+				]
+			},
+			{
+				"char": "space (  )",
+				"actions": [ "skip" ]					
+			},
+			{
+				"char": "hash ( # )",
+				"actions": [ "Increment <em>level</em> of current token (raise parse error if not a header token)" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Create new string token",
+					"Swap to header-body state",
+					"Re-consume character"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "header-body",
+		"rules": [
+			{
+				"char": "EOF",
+				"actions": [ "Push end-of-data state" ]
+			},
+			{
+				"char": "newline",
+				"actions": [
+					"Create new end-header token",
+					"Pop state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [ "Append character to current token" ]
+			}			
+		]
+	},
+	{
+		"state_name": "escape-block-start",
+		"rules": [
+			{
+				"char": "percent ( % )",
+				"actions": [ "Swap to escape-block-body state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append percent ( % ) to current token",
+					"Pop stack",
+					"Re-consume character"
+				]					
+			}
+		]
+	},
+	{
+		"state_name": "escape-block-body",
+		"rules": [
+			{
+				"char": "percent ( % )",
+				"actions": [ "Push escape-block-end state" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [ "Append character to current token" ]
+			}
+
+		]
+	},
+	{
+		"state_name": "escape-block-end",
+		"rules": [
+			{
+				"char": "percent ( % )",
+				"actions": [ "Pop stack" ]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append percent ( % ) to current token",
+					"Pop state"
+				]
+			}
+		]
+	},
+
+	{
+		"state_name": "end-of-data",
+		"rules": [
+			{
+				"char": "anything",
+				"actions": [
+					"Pop state",
+					"Emit any existing token",
+					"End processing"
+				]
+			}
+		]
+	}
+]

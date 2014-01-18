@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tokenization rules</title>		
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+		<script src="js/controllers.js"></script>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+		<link href="style/style.css" rel="stylesheet">
+	</head>
+	<body>
+	<div class="container">
+
+		<header>
+			<h1>Tokenization</h1>
+		</header>
+
+		<div>
+			<h2>The State Stack</h2>
+			<p>
+			The tokenization rules for <em>Caffeinated Markup</em> are implemented via <em>stacked state machine</em>. The current state
+			is always defined as the head of the stack. The stack itself should begin loaded in <em>data</em> state and should not be empty during
+			the parsing of a document. An empty stack should be raised as a <em>parser error</em>
+			</p>
+			<p>
+			The stack defines 3 operations for manipulation:
+			</p>
+			<ul>
+				<li><strong>Push</strong> - push a given state onto the head of the stack, extending the length of the stack.</li>
+				<li><strong>Pop</strong> - pop the current head off the stack, shortening the length of the stack.</li>
+				<li><strong>Swap</strong> - swap the current stack head with the given new state, leaving the stack the same length.</li>
+			</ul>
+		</div>
+
+
+		<section id="states">
+			<h2><a name="states">States</a></h2>
+			<p>
+			Each iteration of the state machine should <em>consume the next character</em> in the input stream before processing. If
+			a state calls for <em>re-consume character</em> then the consumed character should be pushed back onto the end of the
+			input stream.
+			</p>
+
+			<div class="row" ng-app="stateMachine" ng-controller="StatesCtrl">
+				
+				<div class="col-md-3">
+					<div id="states-left-nav">
+						<ul class="nav nav-stacked">
+							<li ng-repeat="state in states"><a href="#{{state.state_name}}-state">{{state.state_name}}</a></li>							
+						</ul>
+					</div>
+				</div>
+
+				<div id="state-list" class="col-md-9">
+
+					<div ng-repeat="state in states">						
+
+						<div class="back-to-top"><a href="#states">top <span class="glyphicon glyphicon-open"></span></a></div>
+						<h3><a name="{{state.state_name}}-state">{{state.state_name}} state</a></h3>
+						<ul class="chars">
+							<li ng-repeat="char in state.rules">{{char.char}}
+							<ul>
+								<li class="char-action" ng-repeat="action in char.actions" ng-bind-html-unsafe="action"></li>
+							</ul>			
+							</li>				
+						</ul>
+
+						<hr>										
+
+					</ul>
+
+
+					</div>
+
+				</div>
+
+			</div> <!-- row -->
+
+		</section>
+
+		
+	</div><!-- container -->
+
+	<script type="text/javascript">
+
+		$( document ).ready(function() {
+			
+			
+
+		    
+		});
+
+	</script>
+
+
+	</body>
+</html>
