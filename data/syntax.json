@@ -1,0 +1,31 @@
+[	
+	{
+		"name": "strong emphasised text",		
+		"description": "You can define strong emphasis by surrounding the text you want to markup with double-asterisks",
+		"example": "This is normal. **This is strongly emphasised**",
+		"may_contain": ["emphasised text","underlined text","deleted text"]
+	},
+	{
+		"name": "emphasised text",
+		"description": "You can define emphasis by surrounding the text you want to markup with double-foreslashes",
+		"example": "This is normal. //This is emphasised//",
+		"may_contain": ["strong emphasised text","underlined text","deleted text"]
+	},
+	{
+		"name": "underlined text",
+		"description": "You can define underlined text by surrounding the text you want to markup with double-underscores",
+		"example": "This is normal. __This is underlined__",
+		"may_contain": ["strong emphasised text","emphasised text","deleted text"]
+	},
+	{
+		"name": "deleted text",
+		"description": "You can define deleted text by surrounding the text you want to markup with double-dashes",
+		"example": "This is normal. --This is deleted--",
+		"may_contain": ["strong emphasised text","underlined text","underlined text"]
+	},
+	{
+		"name": "headings",
+		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading",
+		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6"
+	}
+]

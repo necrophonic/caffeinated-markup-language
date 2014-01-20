@@ -9,6 +9,7 @@
 			{ "char": "double quote ( \" )", "actions": [ "Push quote-start state" ] },
 			{ "char": "open curly brace ( { )", "actions": [ "Push image-start state" ] },
 			{ "char": "open square brace ( [ )", "actions": [ "Push link-start state" ] },
+			{ "char": "backslash ( \\ )", "actions": [ "Push escape-character state" ] },
 			{ "char": "percent ( % )", "actions": [ "Push escape-block-start state" ] },
 			{ "char": "newline ( \\n )", "actions": [ "Create new newline token", "Push newline state" ] },
 			{ "char": "EOF", "actions": [ "Swap to end-of-data state" ] },
@@ -179,6 +180,26 @@
 		]
 	},
 	{
+		"state_name": "escape-character",
+		"rules": [
+			{
+				"char": "EOF",
+				"actions": [ 
+					"Append character to current token",
+					"Pop state",
+					"Push end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append character to current token",
+					"Pop state"
+				]
+			}
+		]
+	},
+	{
 		"state_name": "escape-block-start",
 		"rules": [
 			{
@@ -214,17 +235,150 @@
 		"rules": [
 			{
 				"char": "percent ( % )",
-				"actions": [ "Pop stack" ]
+				"actions": [ "Swap to escape-block-body state" ]
 			},
 			{
 				"char": "anything else",
 				"actions": [
 					"Append percent ( % ) to current token",
+					"Swap to escape-block-body state"
+				]
+			}
+		]
+	},
+
+	{
+		"state_name": "link-start",
+		"rules": [
+			{
+				"char": "open curly brace ( { )",
+				"actions": [
+					"Create new link token",
+					"Push link-href state"
+				]
+			},
+			{
+				"char": "EOF",
+				"actions": [
+					"Append open curly brace ( { ) to current token",
+					"Push end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append open curly brace ( { ) to current token",
+					"Re-consume character",
 					"Pop state"
 				]
 			}
 		]
 	},
+	{
+		"state_name": "link-href",
+		"rules": [
+			{
+				"char": "pipe ( | )",
+				"actions": [
+					"Swap to link-text state",
+					"Switch current link token context to <em>text</em>"
+				]
+			},
+			{
+				"char": "close curly brace ( } )",
+				"actions": [ "Swap to link-end-in-href state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ 
+					"Discard current link token",
+					"Create new string token with content from discarded link token",
+					"Swap to end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append character to current link token"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "link-text",
+		"rules": [			
+			{
+				"char": "close curly brace ( } )",
+				"actions": [ "Swap to link-end-in-text state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ 
+					"Discard current link token",
+					"Create new string token with content from discarded link token",
+					"Swap to end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append character to current link token"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "link-end-in-href",
+		"rules": [
+			{
+				"char": "close curly brace ( } )",
+				"actions": [ "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ 
+					"Discard current link token",
+					"Create new string token with content from discarded link token",
+					"Swap to end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append close curly brace ( } ) to current link token",
+					"Re-consume character",
+					"Swap to link-href state"
+				]
+			}
+		]
+	},
+	{
+		"state_name": "link-end-in-text",
+		"rules": [
+			{
+				"char": "close curly brace ( } )",
+				"actions": [ "Pop state" ]
+			},
+			{
+				"char": "EOF",
+				"actions": [ 
+					"Discard current link token",
+					"Create new string token with content from discarded link token",
+					"Swap to end-of-data state"
+				]
+			},
+			{
+				"char": "anything else",
+				"actions": [
+					"Append close curly brace ( } ) to current link token",
+					"Re-consume character",
+					"Swap to link-text state"
+				]
+			}
+		]
+	},
+
+
 
 	{
 		"state_name": "end-of-data",

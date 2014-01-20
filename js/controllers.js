@@ -35,3 +35,42 @@ stateMachine.controller('StatesCtrl', ['$scope', '$routeParams', '$http',
 			
 		});
 	}]);
+
+var syntaxReference = angular.module('syntaxReference',[]);
+
+syntaxReference.controller('SyntaxCtrl', ['$scope','$routeParams','$http',
+	function($scope,$routeParams,$http) {
+		$http.get('data/syntax.json').success(function(data) {
+			$scope.syntax	 = data;
+
+		});
+	}]);
+
+syntaxReference.filter('dashIt', function() {
+	return function(input) {
+		return replaceSpacesWithDashes(input);
+	}
+});
+syntaxReference.filter('hyperlinkSyntax', function() {
+	return function(input) {		
+
+		console.log("Running");
+
+		if (input) {
+			var to_be_linked;
+			var output = [];
+			for (var i=0; i<input.length;i++) {
+				to_be_linked = input[i];
+				output[i] = '<a href="#'+replaceSpacesWithDashes(to_be_linked)+'">'+to_be_linked+'</a>';
+			}
+			return output.join(', ');
+		}	
+		return "none";
+	}
+});
+
+
+function replaceSpacesWithDashes(input) {
+	console.log("Run replace on "+input);
+	return input.replace(' ','-');
+}
