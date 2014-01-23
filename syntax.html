@@ -50,6 +50,8 @@
 	</div><!-- nav -->
 	<!-- TODO refactor to common -->
 
+
+
 		
 	<div class="container under-header">
 
@@ -67,12 +69,61 @@
 			</div>
 		</header>
 
+		<div class="row">
+			<div class="col-md-12">
 
+			<p>
+			This page defines the syntax available in the <em>Caffeinated Markup</em>
+			specification.
+			</p>
 
-		<p>
-		This page defines the syntax available in the <em>Caffeinated Markup</em>
-		specification.
-		</p>
+			<h2>Escaping</h2>
+			<p>
+			Escaping markup text in other languages can be a bit of a pain. Sometimes you seem to
+			spend a lot of time fiddling around just to get a piece of markup-syntax to be printed
+			as literal text without going though various acrobatic hoops.
+			</p>
+			<p>
+			To that end, escaping in <em>Caffeinated Markup</em> is designed to be as simple
+			as possible so you can spend more time on your content and less time fighting your
+			markup language!
+			</p>
+			<p>
+			<em>Caffeinated Markup</em> gives you two simple options for escaping:
+			</p>
+			<ul>
+				<li><a href="#block-escape">Block escape</a></li>
+				<li><a href="#character-escape">Single character escape</a></li>
+			</ul>
+			<p>
+			For those times when you just need to stop a sequence being interpreted as markup,
+			use the <a href="#character-escape">single character escape</a>:
+			</p>
+			<pre>**This will be emphasised**, but \**this\** will just be surrounded by stars!</pre>
+			<p>
+			Of course, if there's a lot you need to escape it can be tedious let alone messy to
+			have to escape every single sequence. For this eventuallity there's the 
+			<a href="#block-escape">block escape</a>.
+			</p>
+			<p>
+			Consider the following:
+			</p>
+			<pre>This \**has\** a lot of \{{literal markup\}} that we \[[don't want to be interpreted\//</pre>
+			<p>
+			That works, but this is much cleaner!
+			</p>
+			<pre>%%This **has** a lot of {{literal markup}} that we [[don't want to be interpreted//%%</pre>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-md-12">
+			<h2>Available syntax</h2>
+			<p>Without further ado, this is the syntax that comprises <en>Caffeinated Markup</em>:
+			</div>
+		</div>
 
 		<div class="row" ng-app="syntaxReference" ng-controller="SyntaxCtrl">
 
@@ -91,13 +142,14 @@
 
 				<div ng-repeat="item in syntax" class="syntax-item">
 
-				<h3><a name="{{item.name}}">{{item.name}}</a></h3>				
-						
-				<p>
-				{{item.description}}
-				</p>
+				<h3><a name="{{item.name | dashIt}}">{{item.name}}</a></h3>				
+				<blockquote><strong>May contain:</strong> <em ng-bind-html-unsafe="item.may_contain | hyperlinkSyntax"></em></blockquote>
 				<pre>{{item.example}}</pre>
-				<strong>May contain:</strong> <em ng-bind-html-unsafe="item.may_contain | hyperlinkSyntax"></em>		
+
+				<p ng-bind-html-unsafe="item.description"></p>
+
+				
+				
 				</div>
 
 			</div><!-- right col -->

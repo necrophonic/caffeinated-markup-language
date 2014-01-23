@@ -1,31 +1,91 @@
 [	
 	{
+		"name": "text",
+		"description": "Text defines any utf-8 text in the document that does not comprise part of a valid control sequence.",
+		"example": "This is just some normal text"
+	},
+	{
 		"name": "strong emphasised text",		
 		"description": "You can define strong emphasis by surrounding the text you want to markup with double-asterisks",
 		"example": "This is normal. **This is strongly emphasised**",
-		"may_contain": ["emphasised text","underlined text","deleted text"]
+		"may_contain": ["text","emphasised text","underlined text","deleted text","hyperlinks","inline code"]
 	},
 	{
 		"name": "emphasised text",
 		"description": "You can define emphasis by surrounding the text you want to markup with double-foreslashes",
 		"example": "This is normal. //This is emphasised//",
-		"may_contain": ["strong emphasised text","underlined text","deleted text"]
+		"may_contain": ["text","strong emphasised text","underlined text","deleted text","hyperlinks","inline code"]
 	},
 	{
 		"name": "underlined text",
 		"description": "You can define underlined text by surrounding the text you want to markup with double-underscores",
 		"example": "This is normal. __This is underlined__",
-		"may_contain": ["strong emphasised text","emphasised text","deleted text"]
+		"may_contain": ["text","strong emphasised text","emphasised text","deleted text","hyperlinks","inline code"]
 	},
 	{
 		"name": "deleted text",
 		"description": "You can define deleted text by surrounding the text you want to markup with double-dashes",
 		"example": "This is normal. --This is deleted--",
-		"may_contain": ["strong emphasised text","underlined text","underlined text"]
+		"may_contain": ["text","strong emphasised text","underlined text","underlined text","hyperlinks","inline code"]
 	},
 	{
 		"name": "headings",
 		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading",
-		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6"
+		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6",
+		"may_contain": ["text"]
+	},
+	{
+		"name": "hyperlinks",
+		"description": "Hyperlinks are defined simply by surrounding the url you wish to link to with double curly braces. If you want to specify alt-text to display instead of the link itself you can do so by specifying it after a pipe character. <br><strong>Note:</strong> Obviously support of hyperlinks is limited to output formatters that make sense to support them (such as HTML). Other formats should simply show the text representation",
+		"example": "{{http://github.com}} -> simple link to show 'http://github.com'\n\n{{http://github|Check out github}} -> to show 'Check out github'",
+		"may_contain": ["text"]
+	},
+	{
+		"name": "images",
+		"description": "An image can be defined by surrounding the src with double curly braces (open and close).<br><br>Optionally you can specify... options. These are a comma separated list following a pipe (|) delimiter. If for some reason you want a pipe ( | ) in the src you can escape it with a backslash i.e. <code>\\|</code><br><br>Available options are (order doesn't matter):<table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr></table>",
+		"example": "{{panda.jpg}}\n{{panda.jpg|<options>}}\n\n{{/images/panda.jpg|>>,H100}}",
+		"may_contain": ["text"]
+	},
+	{
+		"name": "character escape",
+		"description": "Escape a single character using a backslash before it. Use this method to easily turn control sequences into literal text",
+		"example": "\\**thing\\** -> output literal **thing**",
+		"may_contain": ["text"]
+	},
+	{
+		"name": "block escape",
+		"description": "For the times when you want to be able to escape a whole load of text without having to have backslahes all over the place, you can use double percent marks at either end.",
+		"example": "%%Anything in here will appear literally%%",
+		"may_contain": ["any"]
+	},
+	{
+		"name": "section divider",
+		"description": "Defined by two tilde characters at the start of a line. Anything on the rest of the line will be ignored so you can stretch the line across the document for readability if you like.<br><br>A section divider denotes a break in the page that may or may not contain a visible element. For example it could just be an empty break or could be a horizontal rule",
+		"example": "First section\n~~\nAnother section"
+	},
+	{
+		"name": "line breaks",
+		"description": "Define a line break using a newline character (defined as \\n not \\r\\n)",
+		"example": "This is a line\nThen a newline\n\nThen after a double newline"		
+	},
+	{
+		"name": "list",
+		"description": "TODO"
+	},
+	{
+		"name": "table",
+		"description": "TODO"
+	},
+	{
+		"name": "block code",
+		"description": "Define a block of computer code using double backticks. The first sequence must be on a new line and the block must also end with a newline after the last sequence",
+		"example": "``\n$this = $is->some('code')\n``",
+		"may_contain": ["text"]
+	},
+	{
+		"name": "inline code",
+		"description": "Inline code can be defined in a similar way to <a href=\"#block-code\" with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
+		"example": "This is some text with ``some code`` in it",
+		"may_contain": ["text"]
 	}
 ]
