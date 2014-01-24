@@ -70,11 +70,14 @@
 	},
 	{
 		"name": "list",
-		"description": "TODO"
+		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space)",
+		"example": "- item 1\n- item 2\n- item 3\n\n1 item 1\n2 item 2\n3 item 3",
+		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","deleted text","hyperlinks","inline code"]
 	},
 	{
 		"name": "table",
-		"description": "TODO"
+		"description": "TODO",
+		"example": ""		
 	},
 	{
 		"name": "block code",
