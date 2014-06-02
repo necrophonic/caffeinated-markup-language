@@ -1,7 +1,7 @@
 Caffeinated Markup Language
 ===========================
 
-This repo contains the Github pages for the Caffeinated Markup Language specification that is available at http://necrophonic.github.io/caffeinatad-markup-language
+This repo contains the Github pages for the Caffeinated Markup Language specification that is available at http://necrophonic.github.io/caffeinated-markup-language
 
 
 See Also
