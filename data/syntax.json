@@ -36,8 +36,8 @@
 	},
 	{
 		"name": "hyperlinks",
-		"description": "Hyperlinks are defined simply by surrounding the url you wish to link to with double curly braces. If you want to specify alt-text to display instead of the link itself you can do so by specifying it after a pipe character. <br><strong>Note:</strong> Obviously support of hyperlinks is limited to output formatters that make sense to support them (such as HTML). Other formats should simply show the text representation",
-		"example": "{{http://github.com}} -> simple link to show 'http://github.com'\n\n{{http://github|Check out github}} -> to show 'Check out github'",
+		"description": "Hyperlinks are defined simply by surrounding the url you wish to link to with double square braces. If you want to specify alt-text to display instead of the link itself you can do so by specifying it after a pipe character. <br><strong>Note:</strong> Obviously support of hyperlinks is limited to output formatters that make sense to support them (such as HTML). Other formats should simply show the text representation",
+		"example": "[[http://github.com]] -> simple link to show 'http://github.com'\n\n[[http://github|Check out github]] -> to show 'Check out github'",
 		"may_contain": ["text"]
 	},
 	{
