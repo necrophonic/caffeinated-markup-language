@@ -87,7 +87,7 @@
 	},
 	{
 		"name": "inline code",
-		"description": "Inline code can be defined in a similar way to <a href=\"#block-code\"> with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
+		"description": "Inline code can be defined in a similar way to block-code with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
 		"example": "This is some text with ``some code`` in it",
 		"may_contain": ["text"]
 	},
