@@ -32,7 +32,7 @@
 		"name": "headings",
 		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading",
 		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6",
-		"may_contain": ["text"]
+		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","underlined text","hyperlinks","inline code"]
 	},
 	{
 		"name": "hyperlinks",
@@ -87,8 +87,14 @@
 	},
 	{
 		"name": "inline code",
-		"description": "Inline code can be defined in a similar way to <a href=\"#block-code\" with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
+		"description": "Inline code can be defined in a similar way to <a href=\"#block-code\"> with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
 		"example": "This is some text with ``some code`` in it",
 		"may_contain": ["text"]
+	},
+	{
+		"name": "block quote"
+	},
+	{
+		"name": "rows and columns"
 	}
 ]
