@@ -64,6 +64,11 @@
 		"example": "First section\n~~\nAnother section"
 	},
 	{
+		"name": "spacer",
+		"description": "Like a line paragraph break but inserts a vertical spacer",
+		"example": "This is some text\n^^\n^^\n^^\n^^\nThe some more spaced down"
+	},
+	{
 		"name": "line breaks",
 		"description": "Define a line break using a newline character (defined as \\n not \\r\\n)",
 		"example": "This is a line\nThen a newline\n\nThen after a double newline"		
@@ -96,10 +101,6 @@
 	},
 	{
 		"name": "rows and columns"
-	},
-	{
-		"name": "spacer",
-		"description": "Like a line paragraph break but inserts a vertical spacer",
-		"example": "This is some text\n^^\n^^\n^^\n^^\nThe some more spaced down"
 	}
+	
 ]
