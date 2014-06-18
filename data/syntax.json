@@ -96,5 +96,10 @@
 	},
 	{
 		"name": "rows and columns"
+	},
+	{
+		"name": "spacer",
+		"description": "Like a line paragraph break but inserts a vertical spacer",
+		"example": "This is some text\n^^\n^^\n^^\n^^\nThe some more spaced down"
 	}
 ]
