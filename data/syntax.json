@@ -41,8 +41,8 @@
 		"may_contain": ["text"]
 	},
 	{
-		"name": "images",
-		"description": "An image can be defined by surrounding the src with double curly braces (open and close).<br><br>Optionally you can specify... options. These are a comma separated list following a pipe (|) delimiter. If for some reason you want a pipe ( | ) in the src you can escape it with a backslash i.e. <code>\\|</code><br><br>Available options are (order doesn't matter):<table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr></table>",
+		"name": "media",
+		"description": "[DRAFT] A media item describes any piece of embedded media and is defined by surrounding with double curly braces (matched open and close).<br>By default, a media item will default to a simple image (which for example in HTML would parse to a vanilla &lt;img&gt; tag) though this behaviour can be overriden using optional modifiers.<br><br><strong>&lt;src&gt;</strong> should give the path to and name of the media in question. You may specify multiple urls here (for media where that makes sense such as videos where you want to supply multiple formats - where it doesn't makes sense [such as normal images] the extra urls will be ignored).<br><br><strong>&lt;alt text&gt;</strong> should give the text that should be displayed if the media cannot be displayed - e.g. if images are switched off in HTML or in general in an ASCII doc.<br><br><strong>&lt;options&gt;</strong> should give extra control options (such as desired positioning and size - see table below)<br><br><table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr></table>",
 		"example": "{{panda.jpg}}\n{{panda.jpg|<options>}}\n\n{{/images/panda.jpg|>>,H100}}",
 		"may_contain": ["text"]
 	},
@@ -97,10 +97,16 @@
 		"may_contain": ["text"]
 	},
 	{
-		"name": "block quote"
+		"name": "block quote",
+		"description": "Defines a quoted section of text with optional citation. Starts and ends with \"\".<br><br>Can optionally include a citation which is defined by two dashes on the first line after the last \"\"<br><br>Quotes can be indented and split across lines too (subsequent lines should be indented the same level as the start of the quote if indenting - that much whitespace at the start of each line will then be ignored)",
+		"example": "\"\"<quote>\"\"\n\n\"\"<quote>\"\"\n  -- <citation>",
+		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "headings"]
 	},
 	{
-		"name": "rows and columns"
+		"name": "rows and columns",
+		"description": "CML gives you the ability to easily define multi-column rows.<br><br><em><strong>Note</strong> these aren't the same as tables as they're purely for layout, not contextual tabular data. Rows are also designed to support flow rather than being static like tables.</em><br><br>To start a new row, use the == token (must be on a newline). Divide columns with a double dash -- token (must be on a newline). Finalise the row with another ==. The tokens may be elongated (i.e. may be more than just the two chars) for legibility in the source. Anything on the line after the initial == or -- will be ignored.<br><br>A row can contain any other CML markup except another row<br><br>Support of rows and columns is output formatter dependent as some formats wouldn't make sense to support them and some will change on context (e.g. in HTML, rows and columns may be responsive so when the screen reduces to a certain width, columns may become individual rows to maintain legibility).",
+		"example": "==\nSingle column row\n==\n\n=========================================\nRow with elongated markup\n-----------------------------------------\nSecond column in the row\n=========================================\n\n== THIS WILL BE IGNORED\nFirst row\n-- THIS WILL BE IGNORED TOO\nSecond row\n==\n\n==\nCol 1\n--\nCol 2\n--\nCol 3\n==",
+		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "quote", "headings"]
 	}
 	
 ]
