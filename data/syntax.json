@@ -42,8 +42,8 @@
 	},
 	{
 		"name": "media",
-		"description": "[DRAFT] A media item describes any piece of embedded media and is defined by surrounding with double curly braces (matched open and close).<br>By default, a media item will default to a simple image (which for example in HTML would parse to a vanilla &lt;img&gt; tag) though this behaviour can be overriden using optional modifiers.<br><br><strong>&lt;src&gt;</strong> should give the path to and name of the media in question. You may specify multiple urls here (for media where that makes sense such as videos where you want to supply multiple formats - where it doesn't makes sense [such as normal images] the extra urls will be ignored).<br><br><strong>&lt;alt text&gt;</strong> should give the text that should be displayed if the media cannot be displayed - e.g. if images are switched off in HTML or in general in an ASCII doc.<br><br><strong>&lt;options&gt;</strong> should give extra control options (such as desired positioning and size - see table below)<br><br><table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr></table>",
-		"example": "{{panda.jpg}}\n{{panda.jpg|<options>}}\n\n{{/images/panda.jpg|>>,H100}}",
+		"description": "A media item describes any piece of embedded media and is defined by surrounding with double curly braces (matched open and close).<br>By default, a media item will default to a simple image (which for example in HTML would parse to a vanilla &lt;img&gt; tag) though this behaviour can be overriden using optional modifiers.<br><br><strong>&lt;src&gt;</strong> should give the path to and name of the media in question. You may specify multiple urls here (for media where that makes sense such as videos where you want to supply multiple formats - where it doesn't makes sense [such as normal images] the extra urls will be ignored).<br><br><strong>&lt;alt text&gt;</strong> should give the text that should be displayed if the media cannot be displayed - e.g. if images are switched off in HTML or in general in an ASCII doc.<br><br><strong>&lt;options&gt;</strong> should give extra control options (such as desired positioning and size - see table below)<br><br><table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr><tr><td>\"TEXT\"</td><td>Define alt text / caption for the media item</td></tr></table>",
+		"example": "{{panda.jpg}}\n{{panda.jpg|<options>}}\n\n{{/images/panda.jpg|>>,H100}}\n{{/images/panda.jpg|<<,W100,H100,\"A nice picture of a panda\"}}",
 		"may_contain": ["text"]
 	},
 	{
@@ -75,26 +75,9 @@
 	},
 	{
 		"name": "list",
-		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space)",
-		"example": "- item 1\n- item 2\n- item 3\n\n1 item 1\n2 item 2\n3 item 3",
+		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space). Indent subsequent levels of list by further indenting each line.",
+		"example": "- item 1\n- item 2\n  - item 2.1\n- item 3\n\n1 item 1\n2 item 2\n3 item 3",
 		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","deleted text","hyperlinks","inline code"]
-	},
-	{
-		"name": "table",
-		"description": "TODO",
-		"example": ""		
-	},
-	{
-		"name": "block code",
-		"description": "Define a block of computer code using double backticks. The first sequence must be on a new line and the block must also end with a newline after the last sequence",
-		"example": "``\n$this = $is->some('code')\n``",
-		"may_contain": ["text"]
-	},
-	{
-		"name": "inline code",
-		"description": "Inline code can be defined in a similar way to block-code with a set of backticks at either end. Unlike a block though it can appear inside other linear elements.",
-		"example": "This is some text with ``some code`` in it",
-		"may_contain": ["text"]
 	},
 	{
 		"name": "block quote",
