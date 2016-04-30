@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>The Caffeinated Markup Language</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
@@ -33,6 +34,34 @@
 		<div class="row">
 			<blockquote><em>This page is for those who are interested in developing parsers and formatters for </em>Caffeinated Markup Language<em>. Normal users
 				should look at <a href="syntax.html">the syntax reference</a></em></blockquote>
+		</div>
+
+		<div class="row">
+			<h2>Current version</h2>
+			<p>
+				The most up to date version of the spec is <code>1.0.0</code>
+			</p>
+			<p>
+				All versions will be available in the <a href="http://github.com/necrophonic/caffeinated-markup-language">git repo</a> tagged in the <code>master</code> branch. The
+				spec itself is available as a JSON file:
+				<a href="https://github.com/necrophonic/caffeinated-markup-language/blob/master/spec.json">spec.json</a>
+			</p>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<h2>Versioning</h2>
+			<p>
+				Versions of the spec use the <code>major.minor.patch</code> convention.
+			</p>
+			<ul>
+				<li><code>major</code> - Denotes major (breaking) changes. All versions with the same <em>major</em> number are backwards compatible. e.g. A 1.5.0 implementation must be able
+					to correctly parse 1.1.0 compliant markup, but would not be expected to support 2.0.0</li>
+				<li><code>minor</code> - Denotes minor (new feature) changes. e.g. A new markup class like "elephant formating" is added.</li>
+				<li><code>patch</code> - Denotes a patch change to the spec. The actual spec won't change but may address typos etc. e.g. 1.3.1, 1.3.2, 1.3.3 are all considered
+					to be the same for implementations.</li>
+			</ul>
 
 		</div>
 
