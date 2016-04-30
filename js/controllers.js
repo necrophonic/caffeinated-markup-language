@@ -67,6 +67,5 @@ syntaxReference.filter('hyperlinkSyntax', function() {
 });
 
 function replaceSpacesWithDashes(input) {
-	console.log("Run replace on "+input);
 	return input.replace(' ','-');
 }
