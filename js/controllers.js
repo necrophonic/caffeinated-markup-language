@@ -35,7 +35,7 @@ var syntaxReference = angular.module('syntaxReference',[]);
 
 syntaxReference.controller('SyntaxCtrl', ['$scope','$routeParams','$http',
 	function($scope,$routeParams,$http) {
-		$http.get('spec/spec.json').success(function(data) {
+		$http.get('shttps://raw.githubusercontent.com/necrophonic/caffeinated-markup-language/v1.0.0/spec.json').success(function(data) {
 			$scope.syntax	 = data;
 		});
 	}]);
