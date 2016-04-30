@@ -1,95 +1,117 @@
-[	
+[
 	{
 		"name": "text",
 		"description": "Text defines any utf-8 text in the document that does not comprise part of a valid control sequence.",
-		"example": "This is just some normal text"
+		"example": "This is just some normal text",
+		"icon": "font"
 	},
 	{
-		"name": "strong emphasised text",		
+		"name": "strong emphasised text",
 		"description": "You can define strong emphasis by surrounding the text you want to markup with double-asterisks",
 		"example": "This is normal. **This is strongly emphasised**",
-		"may_contain": ["text","emphasised text","underlined text","deleted text","hyperlinks","inline code"]
+		"may_contain": ["text","emphasised text","underlined text","deleted text","hyperlinks","inline code"],
+		"icon": "bold"
 	},
 	{
 		"name": "emphasised text",
 		"description": "You can define emphasis by surrounding the text you want to markup with double-foreslashes",
 		"example": "This is normal. //This is emphasised//",
-		"may_contain": ["text","strong emphasised text","underlined text","deleted text","hyperlinks","inline code"]
+		"may_contain": ["text","strong emphasised text","underlined text","deleted text","hyperlinks","inline code"],
+		"icon": "italic"
 	},
 	{
 		"name": "underlined text",
 		"description": "You can define underlined text by surrounding the text you want to markup with double-underscores",
 		"example": "This is normal. __This is underlined__",
-		"may_contain": ["text","strong emphasised text","emphasised text","deleted text","hyperlinks","inline code"]
+		"may_contain": ["text","strong emphasised text","emphasised text","deleted text","hyperlinks","inline code"],
+		"icon": "underline"
 	},
 	{
 		"name": "deleted text",
 		"description": "You can define deleted text by surrounding the text you want to markup with double-dashes",
 		"example": "This is normal. --This is deleted--",
-		"may_contain": ["text","strong emphasised text","underlined text","underlined text","hyperlinks","inline code"]
+		"may_contain": ["text","strong emphasised text","underlined text","underlined text","hyperlinks","inline code"],
+		"icon": "strikethrough"
+	},
+	{
+		"name": "inline code",
+		"description": "You can define inlime code text by surrounding the text you want to markup with double-backticks",
+		"example": "This is normal. ``This is code``",
+		"icon": "code"
 	},
 	{
 		"name": "headings",
 		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading",
 		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6",
-		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","underlined text","hyperlinks","inline code"]
+		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","underlined text","hyperlinks","inline code"],
+		"icon": "header"
 	},
 	{
 		"name": "hyperlinks",
 		"description": "Hyperlinks are defined simply by surrounding the url you wish to link to with double square braces. If you want to specify alt-text to display instead of the link itself you can do so by specifying it after a pipe character. <br><strong>Note:</strong> Obviously support of hyperlinks is limited to output formatters that make sense to support them (such as HTML). Other formats should simply show the text representation",
-		"example": "[[http://github.com]] -> simple link to show 'http://github.com'\n\n[[http://github|Check out github]] -> to show 'Check out github'",
-		"may_contain": ["text"]
+		"example": "[[http://github.com]] -> simple link to show 'http://github.com'\n\n[[http://github.com|Check out github]] -> to show 'Check out github'",
+		"may_contain": ["text"],
+		"icon": "link"
 	},
 	{
 		"name": "media",
 		"description": "A media item describes any piece of embedded media and is defined by surrounding with double curly braces (matched open and close).<br>By default, a media item will default to a simple image (which for example in HTML would parse to a vanilla &lt;img&gt; tag) though this behaviour can be overriden using optional modifiers.<br><br><strong>&lt;src&gt;</strong> should give the path to and name of the media in question. You may specify multiple urls here (for media where that makes sense such as videos where you want to supply multiple formats - where it doesn't makes sense [such as normal images] the extra urls will be ignored).<br><br><strong>&lt;alt text&gt;</strong> should give the text that should be displayed if the media cannot be displayed - e.g. if images are switched off in HTML or in general in an ASCII doc.<br><br><strong>&lt;options&gt;</strong> should give extra control options (such as desired positioning and size - see table below)<br><br><table class=\"table table-striped table-bordered\"><tr><td>&gt;&gt;</td><td>Format the image to the right (possibly float right in HTML)</td></tr><tr><td>&lt;&lt;</td><td>Format the image to the left (possibly left right in HTML)</td></tr><tr><td>&gt;&lt;</td><td>Format the image in the center</td></tr><tr><td>&lt;&gt;</td><td>Format the image to stretch and fit its container area (normally horizontal scale-to-fit)</td></tr><tr><td>Hyy</td><td>Define height yy for the image (units arbitrary at the moment)</td></tr><tr><td>Wxx</td><td>Define width xx for the image (units arbitrary at the moment)</td></tr><tr><td>\"TEXT\"</td><td>Define alt text / caption for the media item</td></tr></table>",
 		"example": "{{panda.jpg}}\n{{panda.jpg|<options>}}\n\n{{/images/panda.jpg|>>,H100}}\n{{/images/panda.jpg|<<,W100,H100,\"A nice picture of a panda\"}}",
-		"may_contain": ["text"]
+		"may_contain": ["text"],
+		"icon": "photo"
 	},
 	{
 		"name": "character escape",
 		"description": "Escape a single character using a backslash before it. Use this method to easily turn control sequences into literal text",
 		"example": "\\**thing\\** -> output literal **thing**",
-		"may_contain": ["text"]
+		"may_contain": ["text"],
+		"icon": "hashtag"
 	},
 	{
 		"name": "block escape",
 		"description": "For the times when you want to be able to escape a whole load of text without having to have backslahes all over the place, you can use double percent marks at either end.",
 		"example": "%%Anything in here will appear literally%%",
-		"may_contain": ["any"]
+		"may_contain": ["any"],
+		"icon": "hashtag"
 	},
 	{
 		"name": "section divider",
 		"description": "Defined by two tilde characters at the start of a line. Anything on the rest of the line will be ignored so you can stretch the line across the document for readability if you like.<br><br>A section divider denotes a break in the page that may or may not contain a visible element. For example it could just be an empty break or could be a horizontal rule",
-		"example": "First section\n~~\nAnother section"
+		"example": "First section\n~~\nAnother section",
+		"icon": "ellipsis-h"
 	},
 	{
 		"name": "spacer",
 		"description": "Like a line paragraph break but inserts a vertical spacer",
-		"example": "This is some text\n^^\n^^\n^^\n^^\nThe some more spaced down"
+		"example": "This is some text\n^^\n^^\n^^\n^^\nSome more text spaced down",
+		"icon": "arrow-up"
 	},
 	{
 		"name": "line breaks",
 		"description": "Define a line break using a newline character (defined as \\n not \\r\\n)",
-		"example": "This is a line\nThen a newline\n\nThen after a double newline"		
+		"example": "This is a line\nThen a newline\n\nThen after a double newline",
+		"icon": "paragraph"
 	},
 	{
 		"name": "list",
 		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space). Indent subsequent levels of list by further indenting each line.",
 		"example": "- item 1\n- item 2\n  - item 2.1\n- item 3\n\n1 item 1\n2 item 2\n3 item 3",
-		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","deleted text","hyperlinks","inline code"]
+		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","deleted text","hyperlinks","inline code"],
+		"icon": "list"
 	},
 	{
 		"name": "block quote",
 		"description": "Defines a quoted section of text with optional citation. Starts and ends with \"\".<br><br>Can optionally include a citation which is defined by two dashes on the first line after the last \"\"<br><br>Quotes can be indented and split across lines too (subsequent lines should be indented the same level as the start of the quote if indenting - that much whitespace at the start of each line will then be ignored)",
 		"example": "\"\"<quote>\"\"\n\n\"\"<quote>\"\"\n  -- <citation>",
-		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "headings"]
+		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "headings"],
+		"icon": "quote-left"
 	},
 	{
 		"name": "rows and columns",
 		"description": "CML gives you the ability to easily define multi-column rows.<br><br><em><strong>Note</strong> these aren't the same as tables as they're purely for layout, not contextual tabular data. Rows are also designed to support flow rather than being static like tables.</em><br><br>To start a new row, use the == token (must be on a newline). Divide columns with a double dash -- token (must be on a newline). Finalise the row with another ==. The tokens may be elongated (i.e. may be more than just the two chars) for legibility in the source. Anything on the line after the initial == or -- will be ignored.<br><br>A row can contain any other CML markup except another row<br><br>Support of rows and columns is output formatter dependent as some formats wouldn't make sense to support them and some will change on context (e.g. in HTML, rows and columns may be responsive so when the screen reduces to a certain width, columns may become individual rows to maintain legibility).",
 		"example": "==\nSingle column row\n==\n\n=========================================\nRow with elongated markup\n-----------------------------------------\nSecond column in the row\n=========================================\n\n== THIS WILL BE IGNORED\nFirst row\n-- THIS WILL BE IGNORED TOO\nSecond row\n==\n\n==\nCol 1\n--\nCol 2\n--\nCol 3\n==",
-		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "quote", "headings"]
+		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "quote", "headings"],
+		"icon": "th-large"
 	}
-	
+
 ]
