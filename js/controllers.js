@@ -31,11 +31,12 @@
 // 	}
 // ]);
 
-var syntaxReference = angular.module('syntaxReference',[]);
+
+var syntaxReference = angular.module('syntaxReference',[]).config(function($httpProvider) {delete $httpProvider.defaults.headers.common['X-Requested-With'];});
 
 syntaxReference.controller('SyntaxCtrl', ['$scope','$routeParams','$http',
 	function($scope,$routeParams,$http) {
-		$http.get('shttps://raw.githubusercontent.com/necrophonic/caffeinated-markup-language/v1.0.0/spec.json').success(function(data) {
+		$http.get('spec/spec.json').success(function(data) {
 			$scope.syntax	 = data;
 		});
 	}]);
@@ -66,6 +67,5 @@ syntaxReference.filter('hyperlinkSyntax', function() {
 });
 
 function replaceSpacesWithDashes(input) {
-	console.log("Run replace on "+input);
 	return input.replace(' ','-');
 }
