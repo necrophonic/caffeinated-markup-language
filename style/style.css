@@ -96,3 +96,7 @@ a.anchor {
 .may-contain {
 	font-size: 1em;
 }
+
+#syntax-version-label {
+	float: right;
+}
