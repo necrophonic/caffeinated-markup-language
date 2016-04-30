@@ -2,81 +2,37 @@
 <html>
 	<head>
 		<title>The Caffeinated Markup Language</title>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 		<link href="style/style.css" rel="stylesheet">
 	</head>
 	<body>
 
-	<!-- TODO refactor to common -->
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
-
 			<div class="navbar-header">
-
-				<a href="index.html" class="navbar-brand">Caffeinated Markup</a>
-
+				<a href="index.html" class="navbar-brand"><i class="fa fa-coffee"></i> Caffeinated Markup</a>
 				<ul class="nav navbar-nav">
-					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> about</a></li>								
-
-					<li class="dropdown">
-						<a href="dropdown-toggle" data-toggle="dropdown" href="#">
-							<span class="glyphicon glyphicon-user"></span> users <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="syntax.html">syntax</a></li>
-						</ul>
-					</li>
-					<!--
-					<li class="dropdown">
-						<a href="dropdown-toggle" data-toggle="dropdown" href="#">
-							<span class="glyphicon glyphicon-flash"></span> developers <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="tokenization-rules.html">tokenization</a></li>
-						</ul>
-					</li>	
-					-->				
+					<li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> about</a></li>
+					<li><a href="syntax.html"><i class="fa fa-code" aria-hidden="true"></i> syntax</a></li>
+					<li><a href="developers.html"><i class="fa fa-code-fork" aria-hidden="true"></i> developers</a></li>
 				</ul>
-
 			</div>
-
 		</div><!-- container -->
 	</div><!-- nav -->
-	<!-- TODO refactor to common -->
 
-		
+
 	<div class="container under-header">
 
-		<h1>Caffeinated Markup</h1>
-
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<h1 class="panel-title">Work in progress!</h1>
-			</div>
-			<div class="panel-body">
-				Please note that this documentation is currently a work in progress and
-				not complete yet.
-			</div>
-		</div>
-
+		<header>
+			<h1><i class="fa fa-home"></i> About</h1>
+		</header>
 
 		<div class="row"> <!-- main row -->
 
-			<div class="col-md-3">
-				<div id="states-left-nav" class="panel panel-default">					
-					<ul class="nav nav-stacked">
-						<li><a href="#motivation">Motivation</a></li>
-						<li><a href="#for-users">For users</a></li>
-					</ul>					
-				</div>
-			</div>
-
-
-			<div class="col-md-9">
+			<div class="col-lg-12 col-md-12 col-sm-12">
 				<p>
 				The <em>Caffeinated Markup Language</em> is an attempt to create a simple yet rich
 				markup language for easy posting of awesome blog posts and articles that can then
@@ -90,12 +46,12 @@
 					There are a lot of markup languages out there (HTML, Markdown, LaTEX etc) and they
 					all have strengths and weaknesses. <em>Caffeinated Markup</em> doesn't attempt to
 					replace any of these but provide another option building on the strengths found in
-					other languages.
+					others.
 					</p>
 				</div>
 
 				<div>
-					<h2><a name="for-users">For users</a></h2>
+					<h2><a name="for-users">Get started</a></h2>
 					<p>
 					For the lowdown on <em>Caffeinated Markup</em>, check out the example
 					below and the <a href="syntax.html">syntax reference</a>.
@@ -120,12 +76,14 @@
 							<div class="tab-content">
 
 
-								<div class="tab-pane fade in active" id="example-cml">				
+								<div class="tab-pane fade in active" id="example-cml">
 									<pre>
 # Caffeinated Markup is awesome
-If you're looking for a **simple** yet **powerful** way to //markup// text
+If you're looking for a **simple** yet **powerful** way to markup text
 whilst leaving it relatively uncluttered with markup furniture, then
 //Caffeinated Markup// is the choice for you!
+
+Find out more on [[http://necrophonic.github.io/caffeinated-markup-language|our github page]]
 
   ""Caffeinated Markup makes me happy!""
   -- Happy Dude
@@ -137,24 +95,30 @@ whilst leaving it relatively uncluttered with markup furniture, then
 &lt;h1&gt;Caffeinated Markup is awesome&lt;/h1&gt;
 &lt;p&gt;
 If you're looking for a &lt;strong&gt;simple&lt;/strong&gt; yet &lt;strong&gt;powerful&lt;/strong&gt; way to
-&lt;em&gt;markup&lt;/em&gt; text whilst leaving it relatively uncluttered with markup furniture, then
+markup text whilst leaving it relatively uncluttered with markup furniture, then
 &lt;em&gt;Caffeinated Markup&lt;/em&gt; is the choice for you!
+&lt;/p&gt;
+&lt;p&gt;
+Find out more on &lt;a href="http://necrophonic.github.io/caffeinated-markup-language"&gt;our github page&lt;/a&gt;
 &lt;/p&gt;
 &lt;blockquote&gt;
 Caffeinated Markup makes me happy!
 &lt;cite&gt;Happy Dude&lt;/cite&gt;
 &lt;/blockquote&gt;
 									</pre>
-									<div>
+									<div class="example">
 <h1>Caffeinated Markup is awesome</h1>
 <p>
 If you're looking for a <strong>simple</strong> yet <strong>powerful</strong> way to
-<em>markup</em> text whilst leaving it relatively uncluttered with markup furniture, then
+markup text whilst leaving it relatively uncluttered with markup furniture, then
 <em>Caffeinated Markup</em> is the choice for you!
 </p>
-<blockquote>
-Caffeinated Markup makes me happy!
-<cite>Happy Dude</cite>
+<p>
+Find out more on <a href="http://necrophonic.github.io/caffeinated-markup-language">our github page</a>
+</p>
+<blockquote class="example">
+<i class="fa fa-quote-left"></i>Caffeinated Markup makes me happy!<i class="fa fa-quote-right"></i>
+<cite><i class="fa fa-ellipsis-h"></i> Happy Dude</cite>
 </blockquote>
 									</div>
 								</div>
@@ -167,6 +131,9 @@ Caffeinated Markup is awesome
 If you're looking for a simple yet powerful way to markup text
 whilst leaving it relatively uncluttered with markup furniture, then
 Caffeinated Markup is the choice for you!
+
+Find out more on our github page
+(http://necrophonic.github.io/caffeinated-markup-language)
 
   "Caffeinated Markup makes me happy!"
   -- Happy Dude
@@ -183,7 +150,7 @@ Caffeinated Markup is the choice for you!
 			</div>
 		</div> <!-- main row -->
 
-	</div>	<!-- under header -->		
+	</div>	<!-- under header -->
 
 
 	</body>

@@ -2,73 +2,33 @@
 <html>
 	<head>
 		<title>The Caffeinated Markup Language</title>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link href="style/style.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
 		<script src="js/controllers.js"></script>
-
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		<link href="style/style.css" rel="stylesheet">
 	</head>
 	<body>
 
-	<!-- TODO refactor to common -->
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand"><i class="fa fa-coffee"></i> Caffeinated Markup</a>
+					<ul class="nav navbar-nav">
+						<li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> about</a></li>
+						<li><a href="syntax.html"><i class="fa fa-code" aria-hidden="true"></i> syntax</a></li>
+						<li><a href="developers.html"><i class="fa fa-code-fork" aria-hidden="true"></i> developers</a></li>
+					</ul>
+				</div>
+			</div><!-- container -->
+		</div><!-- nav -->
 
-			<div class="navbar-header">
-
-				<a href="index.html" class="navbar-brand">Caffeinated Markup</a>
-
-				<ul class="nav navbar-nav">
-					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> about</a></li>								
-
-					<li class="dropdown">
-						<a href="dropdown-toggle" data-toggle="dropdown" href="#">
-							<span class="glyphicon glyphicon-user"></span> users <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="syntax.html">syntax</a></li>
-						</ul>
-					</li>
-
-					<!--
-					<li class="dropdown">
-						<a href="dropdown-toggle" data-toggle="dropdown" href="#">
-							<span class="glyphicon glyphicon-flash"></span> developers <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="tokenization-rules.html">tokenization</a></li>
-						</ul>
-					</li>				
-					-->	
-				</ul>
-
-			</div>
-
-		</div><!-- container -->
-	</div><!-- nav -->
-	<!-- TODO refactor to common -->
-
-
-
-		
 	<div class="container under-header">
 
 		<header>
-			<h1>Syntax</h1>
-
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					<h1 class="panel-title">Work in progress!</h1>
-				</div>
-				<div class="panel-body">
-					Please note that this documentation is currently a work in progress and
-					not complete yet.
-				</div>
-			</div>
+			<h1><i class="fa fa-code"></i> Syntax</h1>
 		</header>
 
 		<div class="row">
@@ -104,7 +64,7 @@
 			<pre>**This will be emphasised**, but \**this\** will just be surrounded by stars!</pre>
 			<p>
 			Of course, if there's a lot you need to escape it can be tedious let alone messy to
-			have to escape every single sequence. For this eventuallity there's the 
+			have to escape every single sequence. For this eventuallity there's the
 			<a href="#block-escape">block escape</a>.
 			</p>
 			<p>
@@ -129,35 +89,44 @@
 
 		<div class="row" ng-app="syntaxReference" ng-controller="SyntaxCtrl">
 
+
 			<div class="col-md-3">
-				<div id="states-left-nav" class="panel panel-default">					
+				<div id="states-left-nav" class="panel panel-default">
 					<div class="panel-heading">
+						<a class="anchor" id="syntax"></a>
 					Syntax
 					</div>
 					<ul class="nav nav-stacked">
-						<li ng-repeat="item in syntax"><a href="#{{ item.name | dashIt }}">{{item.name}}</a></li>
-					</ul>					
+						<li ng-repeat="item in syntax"><a href="#{{ item.name | dashIt }}">
+							<span class="fa-stack">
+								<i class="fa fa-square fa-stack-2x"></i>
+								<i class="fa fa-{{item.icon}} fa-stack-1x fa-inverse"></i>
+							</span>
+							{{item.name}}</a></li>
+					</ul>
 				</div>
 			</div>
 
 			<div class="col-md-9">
-
 				<div ng-repeat="item in syntax" class="syntax-item">
-
-				<h3><a name="{{item.name | dashIt}}">{{item.name}}</a></h3>				
-				<blockquote><strong>May contain:</strong> <em ng-bind-html-unsafe="item.may_contain | hyperlinkSyntax"></em></blockquote>
-				<pre>{{item.example}}</pre>
-
-				<p ng-bind-html-unsafe="item.description"></p>
-
-				
-				
+					<span class="anchor">
+						<a class="anchor" id="{{item.name | dashIt}}"></a>
+					</span>
+					<h3>
+						<span class="fa-stack">
+							<i class="fa fa-square fa-stack-2x"></i>
+							<i class="fa fa-{{item.icon}} fa-stack-1x fa-inverse"></i>
+						</span>
+						{{item.name}}
+					</h3>
+					<blockquote class="may-contain"><strong>May contain:</strong> <em ng-bind-html-unsafe="item.may_contain | hyperlinkSyntax"></em></blockquote>
+					<pre>{{item.example}}</pre>
+					<p ng-bind-html-unsafe="item.description"></p>
+					<p class="back-up"><a href="#syntax">back to top <i class="fa fa-arrow-up"></i></a></p>
 				</div>
-
 			</div><!-- right col -->
-
 		</div><!-- row -->
-		
+
 
 
 	</div>
