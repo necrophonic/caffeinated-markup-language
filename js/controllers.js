@@ -31,7 +31,8 @@
 // 	}
 // ]);
 
-var syntaxReference = angular.module('syntaxReference',[]);
+
+var syntaxReference = angular.module('syntaxReference',[]).config(function($httpProvider) {delete $httpProvider.defaults.headers.common['X-Requested-With'];});
 
 syntaxReference.controller('SyntaxCtrl', ['$scope','$routeParams','$http',
 	function($scope,$routeParams,$http) {
