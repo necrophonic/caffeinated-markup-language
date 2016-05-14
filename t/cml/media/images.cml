@@ -1,0 +1,5 @@
+{{image.jpg}}
+{{image.jpg|W300,H200,<<}}
+{{image.jpg|<>}}
+{{image.jpg|>>}}
+{{image.jpg|"Nice picture"}}
