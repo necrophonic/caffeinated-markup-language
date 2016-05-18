@@ -9,29 +9,36 @@
 		"name": "strong emphasised text",
 		"description": "You can define strong emphasis by surrounding the text you want to markup with double-asterisks",
 		"example": "This is normal. **This is strongly emphasised**",
-		"may_contain": ["text","emphasised text","underlined text","deleted text","hyperlinks","inline code"],
+		"may_contain": ["text","emphasised text","underlined text","deleted text", "inserted text","hyperlinks","inline code"],
 		"icon": "bold"
 	},
 	{
 		"name": "emphasised text",
 		"description": "You can define emphasis by surrounding the text you want to markup with double-foreslashes",
 		"example": "This is normal. //This is emphasised//",
-		"may_contain": ["text","strong emphasised text","underlined text","deleted text","hyperlinks","inline code"],
+		"may_contain": ["text","strong emphasised text","underlined text","deleted text", "inserted text","hyperlinks","inline code"],
 		"icon": "italic"
 	},
 	{
 		"name": "underlined text",
 		"description": "You can define underlined text by surrounding the text you want to markup with double-underscores",
 		"example": "This is normal. __This is underlined__",
-		"may_contain": ["text","strong emphasised text","emphasised text","deleted text","hyperlinks","inline code"],
+		"may_contain": ["text","strong emphasised text","emphasised text","deleted text", "inserted text","hyperlinks","inline code"],
 		"icon": "underline"
 	},
 	{
 		"name": "deleted text",
 		"description": "You can define deleted text by surrounding the text you want to markup with double-dashes",
 		"example": "This is normal. --This is deleted--",
-		"may_contain": ["text","strong emphasised text","underlined text","underlined text","hyperlinks","inline code"],
+		"may_contain": ["text","strong emphasised text","underlined text","underlined text", "inserted text", "hyperlinks","inline code"],
 		"icon": "strikethrough"
+	},
+	{
+		"name": "inserted text",
+		"description": "You can define inserted text by surrounding it with double-pluses",
+		"example": "This is normal. ++This is inserted++",
+		"may_contain": ["text","strong emphasised text","underlined text","underlined text","deleted text", "hyperlinks","inline code"],
+		"icon": "plus"
 	},
 	{
 		"name": "inline code",
