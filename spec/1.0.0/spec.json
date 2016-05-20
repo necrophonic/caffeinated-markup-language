@@ -103,7 +103,7 @@
 		"name": "paragraph break",
 		"description": "Define a paragraph break using two or more newline charaters",
 		"example": "This is a paragraph\n\nThen another\n\n\n\n\nThen another",
-		"icon": "paragrah"
+		"icon": "paragraph"
 	},
 	{
 		"name": "list",
