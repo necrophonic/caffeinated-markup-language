@@ -1,0 +1,1 @@
+Normal then **escaped __ muchly in the middle of a **string.
