@@ -107,7 +107,7 @@
 	},
 	{
 		"name": "list",
-		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space). Indent subsequent levels of list by further indenting each line.",
+		"description": "<em>Caffeinated Markup</em> supports both unordered and ordered lists. To define a list item use a dash (unordered) or digit (ordered) to begin a line (preceeded by at least one space). Indent subsequent levels of list by further indenting each line.<br><br>A list is terminated by a double newline.",
 		"example": "- item 1\n- item 2\n  - item 2.1\n- item 3\n\n1 item 1\n2 item 2\n3 item 3",
 		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","deleted text","hyperlinks","inline code"],
 		"icon": "list"
