@@ -120,11 +120,18 @@
 		"icon": "quote-left"
 	},
 	{
-		"name": "rows and columns",
+		"name": "grid",
 		"description": "CML gives you the ability to easily define multi-column rows.<br><br><em><strong>Note</strong> these aren't the same as tables as they're purely for layout, not contextual tabular data. Rows are also designed to support flow rather than being static like tables.</em><br><br>To start a new row, use the == token (must be on a newline). Divide columns with a double dash -- token (must be on a newline). Finalise the row with another ==. The tokens may be elongated (i.e. may be more than just the two chars) for legibility in the source. Anything on the line after the initial == or -- will be ignored.<br><br>A row can contain any other CML markup except another row<br><br>Support of rows and columns is output formatter dependent as some formats wouldn't make sense to support them and some will change on context (e.g. in HTML, rows and columns may be responsive so when the screen reduces to a certain width, columns may become individual rows to maintain legibility).",
 		"example": "==\nSingle column row\n==\n\n=========================================\nRow with elongated markup\n-----------------------------------------\nSecond column in the row\n=========================================\n\n== THIS WILL BE IGNORED\nFirst row\n-- THIS WILL BE IGNORED TOO\nSecond row\n==\n\n==\nCol 1\n--\nCol 2\n--\nCol 3\n==",
 		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "quote", "headings"],
 		"icon": "th-large"
+	},
+	{
+		"name": "table",
+		"description": "Tabular data",
+		"example": "^Header 1^Header 2^Header 3^\n|Col 1|Col 2|Col 3|\n|Col 1|Col 2|Col 3|\n",
+		"may_contain": ["text", "strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks"],
+		"icon": "table"
 	}
 
 ]
