@@ -48,8 +48,8 @@
 	},
 	{
 		"name": "headings",
-		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading",
-		"example": "# Heading 1\n## Heading 2\n### Heading 3\n#### Heading 4\n##### Heading 5\n###### Heading 6",
+		"description": "Headings are defined by a sequence of hashes at the beginning of a new line followed by the text for the heading.<br><br>If not at the start of the input, there should be a clear blank line before the heading. A blank line must also follow.",
+		"example": "# Heading 1\n\n## Heading 2\n\n### Heading 3\n\n#### Heading 4\n\n##### Heading 5\n\n###### Heading 6",
 		"may_contain": ["text","strong emphasised text","emphasised text","underlined text","underlined text","hyperlinks","inline code"],
 		"icon": "header"
 	},
@@ -83,8 +83,8 @@
 	},
 	{
 		"name": "section divider",
-		"description": "Defined by two tilde characters at the start of a line. Anything on the rest of the line will be ignored so you can stretch the line across the document for readability if you like.<br><br>A section divider denotes a break in the page that may or may not contain a visible element. For example it could just be an empty break or could be a horizontal rule",
-		"example": "First section\n~~\nAnother section",
+		"description": "Defined by two tilde characters at the start of a line, preceed by either the start of input or a blank line. Anything on the rest of the line will be ignored so you can stretch the line across the document for readability if you like.<br><br>A section divider denotes a break in the page that may or may not contain a visible element. For example it could just be an empty break or could be a horizontal rule",
+		"example": "First section\n\n~~\n\nAnother section",
 		"icon": "ellipsis-h"
 	},
 	{
@@ -128,7 +128,7 @@
 	},
 	{
 		"name": "table",
-		"description": "Tabular data",
+		"description": "Tabular data. Must be either at start of input or preceeded by a blank line. Header items are denoted by ^ and normal columns by | at the start of the cell.",
 		"example": "^Header 1^Header 2^Header 3^\n|Col 1|Col 2|Col 3|\n|Col 1|Col 2|Col 3|\n",
 		"may_contain": ["text", "strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks"],
 		"icon": "table"
