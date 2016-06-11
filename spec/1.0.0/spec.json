@@ -114,8 +114,8 @@
 	},
 	{
 		"name": "block quote",
-		"description": "Defines a quoted section of text with optional citation. Starts and ends with \"\".<br><br>Can optionally include a citation which is defined by two dashes on the first line after the last \"\"<br><br>Quotes can be indented and split across lines too (subsequent lines should be indented the same level as the start of the quote if indenting - that much whitespace at the start of each line will then be ignored)",
-		"example": "\"\"<quote>\"\"\n\n\"\"<quote>\"\"\n  -- <citation>",
+		"description": "Defines a section of text quoted from another source. It is begun by a blank line, followed by a line containg two double quotes then a newline. It is finished with the two double quotes on a newline, followed by a blank line.\n\nOptionally you can include a footer which is defined by a double dash (--) on a newline.",
+		"example": "Some text\"\"\n<quote>\n\"\"Then more text.",
 		"may_contain": ["text","strong emphasised text", "emphasised text", "underlined text", "deleted text", "inserted text", "hyperlinks", "media", "headings"],
 		"icon": "quote-left"
 	},
