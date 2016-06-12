@@ -1,0 +1,11 @@
+/*
+  Caffeinated Markup reference style
+
+  This file contains a default stylesheet for html brewed Caffeinated Markup. You don't need to use
+  this, but the reference implementations use it and the acceptance tests at
+  http://github.com/necrophonic/caffeinated-markup-language/t assume these classes etc.
+*/
+
+em.underlined {
+  text-decoration: underlined;
+}
